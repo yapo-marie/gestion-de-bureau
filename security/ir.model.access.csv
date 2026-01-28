@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_article,st.art,model_staging_article,base.group_user,1,1,1,1
+access_journal,st.jou,model_staging_journal,base.group_user,1,1,1,1
+access_stock,st.sto,model_staging_stock,base.group_user,1,1,1,1
+access_wiz,wiz.imp,model_excel_import_wizard,base.group_user,1,1,1,1
+

@@ -1,0 +1,8 @@
+<odoo>
+    <menuitem id="menu_root_supplies" name="Gestion Fournitures" sequence="10"/>
+    <menuitem id="menu_import_action" name="Uploader Excel" parent="menu_root_supplies" action="action_excel_import_wizard" sequence="1"/>
+    <menuitem id="menu_transit_zone" name="Zone de Transit" parent="menu_root_supplies" sequence="2"/>
+    <menuitem id="menu_articles" name="Feuille 1 : Articles" parent="menu_transit_zone" action="action_staging_article"/>
+    <menuitem id="menu_journal" name="Feuille 2 : Journal" parent="menu_transit_zone" action="action_staging_journal"/>
+    <menuitem id="menu_stock" name="Feuille 3 : État Stocks" parent="menu_transit_zone" action="action_staging_stock"/>
+</odoo>
