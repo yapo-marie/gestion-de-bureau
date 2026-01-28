@@ -1,15 +1,25 @@
-from odoo import models, fields
-
-class StagingStock(models.Model):
-    _name = 'staging.stock'
-    _description = "Transit : État des stocks"
-
-    categorie = fields.Char(string="CATEGORIE")
-    article = fields.Char(string="Article")
-    ref = fields.Char(string="Ref")
-    stock_initial = fields.Float(string="Stock initial")
-    entrees = fields.Float(string="Entrées")
-    sorties = fields.Float(string="Sorties")
-    stock_final = fields.Float(string="Stock Final")
-    commentaires = fields.Char(string="Commentaires")
-    state = fields.Selection([('draft', 'Brouillon'), ('done', 'Importé')], default='draft')
+<odoo>
+    <record id="view_staging_stock_tree" model="ir.ui.view">
+        <field name="name">staging.stock.tree</field>
+        <field name="model">staging.stock</field>
+        <field name="arch" type="xml">
+            <tree string="État des Stocks" editable="bottom">
+                <header>
+                    <button name="action_validate_and_transfer"
+                            string="Valider et Transférer vers Odoo"
+                            type="object"
+                            class="oe_highlight"
+                            confirm="Voulez-vous vraiment créer les articles et initialiser les stocks ?"/>
+                </header>
+                <field name="categorie"/>
+                <field name="ref"/>
+                <field name="article"/>
+                <field name="stock_initial"/>
+                <field name="entrees"/>
+                <field name="sorties"/>
+                <field name="stock_final"/>
+                <field name="state" readonly="1"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

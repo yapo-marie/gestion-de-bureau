@@ -1,17 +1,27 @@
-from odoo import models, fields
+<odoo>
+    <record id="view_staging_journal_tree" model="ir.ui.view">
+        <field name="name">staging.journal.tree</field>
+        <field name="model">staging.journal</field>
+        <field name="arch" type="xml">
+            <tree string="Journal Mouvements" editable="bottom" decoration-info="state == 'draft'">
+                <field name="date_entree"/>
+                <field name="ref_article"/>
+                <field name="article"/>
+                <field name="qte_entree" sum="Total Entrées"/>
+                <field name="prix_unitaire"/>
+                <field name="date_sortie"/>
+                <field name="qte_sortie" sum="Total Sorties"/>
+                <field name="demandeur"/>
+                <field name="service"/>
+                <field name="personne"/>
+                <field name="state" readonly="1"/>
+            </tree>
+        </field>
+    </record>
 
-class StagingJournal(models.Model):
-    _name = 'staging.journal'
-    _description = "Transit : Journal entrées et sorties"
-
-    personne = fields.Char(string="Nom Saisie")
-    article = fields.Char(string="Articles")
-    date_entree = fields.Date(string="Date Entrée")
-    qte_entree = fields.Float(string="Qté Entrée")
-    prix_unitaire = fields.Float(string="Prix Unitaire HT")
-    date_sortie = fields.Date(string="Date Sortie")
-    qte_sortie = fields.Float(string="Qté Sortie")
-    demandeur = fields.Char(string="Demandeur")
-    service = fields.Char(string="Service/Agence")
-    ref_article = fields.Char(string="Réf Article")
-    state = fields.Selection([('draft', 'Brouillon'), ('done', 'Importé')], default='draft')
+    <record id="action_staging_journal" model="ir.actions.act_window">
+        <field name="name">Journal (Feuille 2)</field>
+        <field name="res_model">staging.journal</field>
+        <field name="view_mode">tree</field>
+    </record>
+</odoo>
